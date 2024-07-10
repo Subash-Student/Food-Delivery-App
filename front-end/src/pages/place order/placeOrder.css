@@ -6,6 +6,14 @@
     gap: 50px;
     margin-top: 100px
 }
+.place-order-active{
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    gap: 50px;
+    margin-top: 100px;
+    
+}
 .place-order-left{
     width: 100%;
     width: max(30%,500px);

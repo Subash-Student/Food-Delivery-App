@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import "./placeOrder.css"
+import { useMediaQuery } from "@uidotdev/usehooks";
 import { StoreContext } from '../../Context/StoreContext';
 
 const PlaceOrder = () => {
 
   const{getTotalCartAmount} = useContext(StoreContext)
-
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   return (
-    <form  className="place-order">
+    <form  className={isSmallDevice ? "place-order-active" : "place-order"} >
       <div className="place-order-left">
         <p className="title">
           Delivery Information
@@ -31,7 +32,7 @@ const PlaceOrder = () => {
 
       <div className="place-order-right">
 
-      <div className="cart-total">
+      <div className='cart-total'>
         <h2>Cart Totals</h2>
         <div>
           <div className="cart-total-details">
