@@ -1,11 +1,13 @@
 import React, {  useContext, useState } from 'react'
 import "./login.css"
+import axios from "axios"
+import {toast} from "react-toastify"
 import { assets } from '../../assets/assets'
 import { StoreContext } from '../../Context/StoreContext';
 
 const LogInPopup = ({setShowLogin}) => {
     const[currentState,setCurrentState] = useState("Log In");
-    const {url} = useContext(StoreContext);
+    const {url,token,setToken} = useContext(StoreContext);
     const [data,setData] = useState({
         name:"",
         email:'',
@@ -21,7 +23,28 @@ const LogInPopup = ({setShowLogin}) => {
 
 const onLogin = async(event)=>{
     event.preventDefault();
-    let 
+   let newUrl = url;
+   if(currentState === "Log In"){
+    newUrl+="/api/user/login";
+   }else{
+    newUrl+="/api/user/register";
+   }
+
+   const response = await axios.post(newUrl,data);
+   if(response.data.success){
+           setToken(response.data.token);
+           localStorage.setItem("token",response.data.token);
+           setShowLogin(false);
+           console.log(currentState);
+           if (currentState === "Log In") {
+            toast.success("You Are Loged In")
+           }else{
+            toast.success("Account Created");
+           }
+           
+   }else{
+    alert(response.data.message)
+   }
 
 }
 

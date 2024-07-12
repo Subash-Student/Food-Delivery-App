@@ -3,6 +3,8 @@ import Navbar from "./Components/Navbar/Navbar"
 import {Route,Routes } from "react-router-dom"
 import Home from './pages/home2/Home'
 import Cart from './pages/cart/Cart'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import PlaceOrder from './pages/place order/PlaceOrder'
 import Footer from './Components/footer/Footer'
 import LogInPopup from './Components/logInPopUp/LogInPopup'
@@ -12,6 +14,7 @@ const App = () => {
   return (
     <>
     {showLogin?<LogInPopup setShowLogin={setShowLogin}/>:<></>}
+    <ToastContainer />
     <div className='app'>
       <Navbar setShowLogin={setShowLogin}/>
       <Routes>
