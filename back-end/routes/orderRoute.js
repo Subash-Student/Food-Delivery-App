@@ -1,5 +1,5 @@
 import express from "express";
-import { placeOrder, userOrder } from "../controllers/orderController.js";
+import { listOrder, placeOrder, updateStatus, userOrder } from "../controllers/orderController.js";
 import authMidleware from "../middleware/auth.js";
 
 
@@ -8,6 +8,8 @@ const orderRouter = express.Router();
 
 orderRouter.post("/place",authMidleware,placeOrder);
 orderRouter.post("/userorders",authMidleware,userOrder);
+orderRouter.get("/list",listOrder);
+orderRouter.post("/status",updateStatus)
 
 // WAITING FOR PAYMRNT VERIFICATION
 

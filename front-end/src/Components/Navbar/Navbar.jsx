@@ -19,7 +19,9 @@ const logOut = ()=>{
 
 
 }
-
+const navihdlr = ()=>{
+  navigate("/myorders")
+}
   return (
     <div className='navbar'>
        <Link to='/'><img src={assets.logo} alt="" className="logo" /></Link> 
@@ -40,7 +42,7 @@ const logOut = ()=>{
             <div className="navbar-profile">
               <img src={assets.profile_icon} alt="" />
               <ul className="navprofile-dropdown">
-                <li><img onClick={()=>navigate("/myorders")} src={assets.bag_icon} alt="" /><p>Orders</p></li>
+                <li><img  src={assets.bag_icon} alt="" /><p onClick={navihdlr}>Orders</p></li>
                 <hr />
                 <li><img src={assets.logout_icon} alt="" /><p onClick={logOut}>LogOut</p></li>
               </ul>
