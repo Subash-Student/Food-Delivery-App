@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import PlaceOrder from './pages/place order/PlaceOrder'
 import Footer from './Components/footer/Footer'
 import LogInPopup from './Components/logInPopUp/LogInPopup'
+// import Verifyed from './pages/Verify/Verifyed'
 
 const App = () => {
   const[showLogin,setShowLogin] = useState(false)
@@ -21,6 +22,12 @@ const App = () => {
          <Route path='/' element={<Home />} />
          <Route path='/cart' element={<Cart />} />
          <Route path='/order' element={<PlaceOrder />} />
+
+
+{/* WAITING FOR PAYMRNT VERIFICATION */}
+
+
+         {/* <Route path='/verify' element={<Verifyed />} /> */}
       </Routes>
     </div>
     <Footer />
