@@ -1,11 +1,15 @@
-import React, { useContext,useState } from 'react';
+import React, { useContext,useEffect,useState } from 'react';
 import "./placeOrder.css"
 import axios from "axios"
+import {useNavigate} from "react-router-dom"
 import { StoreContext } from '../../Context/StoreContext';
 
 const PlaceOrder = () => {
 
   const{getTotalCartAmount,token,food_list,cartItems,url} = useContext(StoreContext);
+  
+
+ 
 
   const[data,setData] = useState({
     firstName:"",
@@ -50,8 +54,18 @@ if(response.data.success){
   alert("Sorry Currently This Site Cannot Accept Payment...!")
 }
 
-
 }
+
+const navigate = useNavigate();
+
+useEffect(()=>{
+  if(!token){
+    navigate("/cart")
+  }else if(getTotalCartAmount() === 0){
+    navigate("/cart")
+  }
+
+},[token])
 
 
   

@@ -95,4 +95,17 @@ const placeOrder = async(req,res)=>{
 
 // export{verifyOrder}
 
-export {placeOrder}
+//  User order for Frontend
+
+const userOrder = async(req,res)=>{
+
+    try {
+        const orders = await orderModal.find({userId:req.body.userId});
+        res.json({success:true,data:orders});
+    } catch (error) {
+        console.log(error);
+        res.json({success:false,message:"Error"})
+    }
+}
+
+export {placeOrder,userOrder}
