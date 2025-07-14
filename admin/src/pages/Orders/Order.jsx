@@ -10,7 +10,7 @@ import { useEffect,useState } from 'react';
 const Order = () => {
 
   const [orders,setOrders] = useState([]);
-  const url = "http://localhost:4000";
+  const url = "https://food-delivery-app-backend-eta.vercel.app";
 
   const fetchAllOrder = async()=>{
     const response = await axios.get(url+"/api/order/list");

@@ -6,7 +6,7 @@ import "./list.css";
 
 const List = () => {
 
-  const url = "http://localhost:4000";
+  const url = "https://food-delivery-app-backend-eta.vercel.app";
   const [list,setList] = useState([]);
 
   const fetchList = async()=>{
@@ -46,7 +46,7 @@ if(response.data.success){
           </div>
           {list.map((item,index)=>(
             <div className="list-table-formate" key={index}>
-              <img src={`${url}/images/`+item.image} />
+              <img src={item.image} />
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>{item.price}</p>
