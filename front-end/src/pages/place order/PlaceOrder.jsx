@@ -3,6 +3,7 @@ import "./placeOrder.css"
 import axios from "axios"
 import {useNavigate} from "react-router-dom"
 import { StoreContext } from '../../Context/StoreContext';
+import {toast} from "react-toastify"
 
 const PlaceOrder = () => {
 
@@ -51,7 +52,10 @@ if(response.data.success){
   const {session_url} = response.data;
   window.location.replace(session_url);
 }else{
-  alert("Sorry Currently This Site Cannot Accept Payment...!")
+  toast.success("Your Order Is Placed");
+  setTimeout(()=>{
+    navigate("/")
+  },1500)
 }
 
 }
