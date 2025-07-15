@@ -13,12 +13,12 @@ const App = () => {
   const [isLoading,setIsloading] = useState(false)
   return (
     <div>
+      {isLoading && <Loader />}
       <ToastContainer />
       <Navbar />
       <hr />
       <div className="app-content">
       <Sidebar />
-      {isLoading && <Loader />}
       <Routes>
         <Route path='/add' element={<Add setIsloading={setIsloading} />} />
         <Route path='/list' element={<List setIsloading={setIsloading} />} />
