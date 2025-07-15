@@ -1,5 +1,6 @@
 import  Mongoose  from "mongoose";
 
+
 const foodSchema = new Mongoose.Schema({
     name: {type :String,required :true},
     description: {type:String,required:true},

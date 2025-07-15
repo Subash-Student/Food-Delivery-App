@@ -8,7 +8,6 @@ import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 
 
-
 // app config
 
 const app = express();
@@ -20,8 +19,8 @@ app.use(express.json());
 
 
 const allowedOrigins = [
-  'https://food-delivery-app-admin-three.vercel.app',
-  'https://food-delivery-app-eight-gamma.vercel.app',
+  'https://food-delivery-app-admin-ashy.vercel.app',
+  'https://food-delivery-app-nu-puce.vercel.app',
   'http://localhost:5173',
   'http://localhost:5174',
 ];
@@ -38,6 +37,7 @@ app.use(cors({
   allowedHeaders: '*',
   credentials: true,
 }));
+
 
 
 //db connection
