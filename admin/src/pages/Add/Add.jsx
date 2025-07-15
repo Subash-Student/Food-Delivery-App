@@ -6,7 +6,7 @@ import axios from "axios";
 
 const Add = () => {
 
-    const url = "https://food-delivery-app-backend-eta.vercel.app";
+    const url = "https://food-delivery-app-backend-plum.vercel.app";
     const[image,setImage]= useState(false);
     const [data,setData] = useState({
         name:"",

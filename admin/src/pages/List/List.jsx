@@ -6,7 +6,7 @@ import "./list.css";
 
 const List = () => {
 
-  const url = "https://food-delivery-app-backend-eta.vercel.app";
+  const url = "https://food-delivery-app-backend-plum.vercel.app";
   const [list,setList] = useState([]);
 
   const fetchList = async()=>{
