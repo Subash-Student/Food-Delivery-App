@@ -8,10 +8,12 @@ import { assets } from '../../assets/assets';
 const MyOrder = () => {
 
     const [data,setData] = useState([]);
-    const{url,token} = useContext(StoreContext);
+    const{url,token,setIsloading} = useContext(StoreContext);
 
     const fetchOrders = async()=>{
+        setIsloading(true)
         const response = await axios.post(`${url}/api/order/userorders`,{},{headers:{token}});
+        setIsloading(false)
             setData(response.data.data);
        
     }

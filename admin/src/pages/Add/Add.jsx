@@ -4,7 +4,7 @@ import { assets } from '../../assets/assets'
 import {toast} from "react-toastify"
 import axios from "axios";
 
-const Add = () => {
+const Add = ({setIsloading}) => {
 
     const url = "https://food-delivery-app-backend-plum.vercel.app";
     const[image,setImage]= useState(false);
@@ -30,8 +30,10 @@ const Add = () => {
         formData.append("price",Number(data.price));
         formData.append("category",data.category);
         formData.append("image",image);
-
+       
+        setIsloading(true)
         const response = await axios.post(`${url}/api/food/add`,formData);
+        setIsloading(false)
         if(response.data.success){
            setData({
             name:"",

@@ -7,13 +7,15 @@ import { useEffect,useState } from 'react';
 
 
 
-const Order = () => {
+const Order = ({setIsloading}) => {
 
   const [orders,setOrders] = useState([]);
   const url = "https://food-delivery-app-backend-plum.vercel.app";
 
   const fetchAllOrder = async()=>{
+    setIsloading(true)
     const response = await axios.get(url+"/api/order/list");
+    setIsloading(false)
     if(response.data.data){
       setOrders(response.data.data);
     }else{

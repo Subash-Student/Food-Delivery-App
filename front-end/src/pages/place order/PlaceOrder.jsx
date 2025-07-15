@@ -4,11 +4,11 @@ import axios from "axios"
 import {useNavigate} from "react-router-dom"
 import { StoreContext } from '../../Context/StoreContext';
 import {toast} from "react-toastify"
-
 const PlaceOrder = () => {
-
-  const{getTotalCartAmount,token,food_list,cartItems,url} = useContext(StoreContext);
   
+  const{getTotalCartAmount,token,food_list,cartItems,url,isLoading,setIsloading} = useContext(StoreContext);
+  
+
 
  
 
@@ -47,7 +47,9 @@ const placeOrder = async(e)=>{
     items:orderItems,
     amount:getTotalCartAmount()+2,
   }
-let response = await axios.post(`${url}/api/order/place`,orderData,{headers:{token}});
+  setIsloading(true)
+  let response = await axios.post(`${url}/api/order/place`,orderData,{headers:{token}});
+  setIsloading(false)
 if(response.data.success){
   const {session_url} = response.data;
   window.location.replace(session_url);

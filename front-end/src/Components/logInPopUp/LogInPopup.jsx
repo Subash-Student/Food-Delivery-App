@@ -7,7 +7,7 @@ import { StoreContext } from '../../Context/StoreContext';
 
 const LogInPopup = ({setShowLogin}) => {
     const[currentState,setCurrentState] = useState("Log In");
-    const {url,token,setToken} = useContext(StoreContext);
+    const {url,token,setToken,setIsloading} = useContext(StoreContext);
     const [data,setData] = useState({
         name:"",
         email:'',
@@ -29,8 +29,9 @@ const onLogin = async(event)=>{
    }else{
     newUrl+="/api/user/register";
    }
-
+   setIsloading(true);
    const response = await axios.post(newUrl,data);
+   setIsloading(false);
    if(response.data.success){
            setToken(response.data.token);
            localStorage.setItem("token",response.data.token);

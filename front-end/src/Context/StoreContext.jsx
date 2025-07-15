@@ -11,6 +11,7 @@ const StoreContextProvider = (props) =>{
     const url = "https://food-delivery-app-backend-plum.vercel.app";
     const [token,setToken] = useState("");
     const[food_list,setFoodList] = useState([]);
+   const[isLoading,setIsloading] = useState(false);
 
     const addToCart = async(itemId)=>{
         
@@ -21,15 +22,19 @@ const StoreContextProvider = (props) =>{
             setCartItems((prev) => ({...prev,[itemId]:prev[itemId]+1}))
         }
         if(token){
+            setIsloading(true)
             await axios.post(`${url}/api/cart/add`,{itemId},{headers:{token}})
+            setIsloading(false)
         }
-
+        
     }
-
+    
     const removeFromCart = async(itemId)=>{
         setCartItems((prev )=>({...prev,[itemId]:prev[itemId]-1}));
         if(token){
+            setIsloading(true)
             await axios.post(url+"/api/cart/remove",{itemId},{headers:{token}})
+            setIsloading(false)
         }
 }
 
@@ -45,15 +50,19 @@ const getTotalCartAmount = ()=>{
 }
 
 const fetchFoodList = async()=>{
+    setIsloading(true)
     const response = await axios.get(url+'/api/food/list');
+    setIsloading(false)
     setFoodList(response.data.data);
-
-
+    
+    
 }
 
 const localCartData = async(token)=>{
-   
+    
+    setIsloading(true)
     const response = await axios.post(`${url}/api/cart/get`,{},{headers:{token}});
+    setIsloading(false)
     setCartItems(response.data.cartData)
 }
 
@@ -75,7 +84,9 @@ useEffect(()=>{
     getTotalCartAmount,
     url,
     token,
-    setToken
+    setToken,
+    isLoading,
+    setIsloading
     }
     return(
         <StoreContext.Provider value={contextValue}>

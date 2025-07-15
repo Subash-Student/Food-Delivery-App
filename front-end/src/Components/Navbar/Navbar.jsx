@@ -30,7 +30,7 @@ const navihdlr = ()=>{
             <a href='#explore-menu' onClick={()=>setMenu("Menu")} className={menu==="Menu"?"active":""}>Menu</a>
             <a href='#AppDownload' onClick={()=>setMenu("Mobile")} className={menu==="Mobile"?"active":""}>Mobile App</a>
             <a href='#footer' onClick={()=>setMenu("Contact-Us")}className={menu==='Contact-Us'?"active":""}>Contact Us</a>
-            <a href='https://food-delivery-app-admin-three.vercel.app' target='blank' className={menu==='Contact-Us'?"active":""}>Admin Panel</a>
+            <a href='https://food-delivery-app-admin-ashy.vercel.app' target='blank' className={menu==='Contact-Us'?"active":""}>Admin Panel</a>
         </ul>
         <div className="navbar-right">
             <img src={assets.search_icon}/>

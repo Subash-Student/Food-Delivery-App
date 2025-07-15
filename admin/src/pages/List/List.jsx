@@ -4,13 +4,15 @@ import {toast} from "react-toastify";
 import "./list.css";
 
 
-const List = () => {
+const List = ({setIsloading}) => {
 
   const url = "https://food-delivery-app-backend-plum.vercel.app";
   const [list,setList] = useState([]);
 
   const fetchList = async()=>{
+    setIsloading(true)
     const response = await axios.get(`${url}/api/food/list`);
+    setIsloading(false)
     if(response.data.success){
       setList(response.data.data)
     }else{

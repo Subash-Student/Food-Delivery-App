@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import{Routes,Route} from "react-router-dom"
 import Sidebar from './components/sidebar/Sidebar'
@@ -7,8 +7,10 @@ import List from './pages/List/List'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Order from './pages/Orders/Order'
+import Loader from '../../front-end/src/Components/Loader/Loader'
 
 const App = () => {
+  const [isLoading,setIsloading] = useState(false)
   return (
     <div>
       <ToastContainer />
@@ -16,10 +18,11 @@ const App = () => {
       <hr />
       <div className="app-content">
       <Sidebar />
+      {isLoading && <Loader />}
       <Routes>
-        <Route path='/add' element={<Add />} />
-        <Route path='/list' element={<List />} />
-        <Route path='/orders' element={<Order />} />
+        <Route path='/add' element={<Add setIsloading={setIsloading} />} />
+        <Route path='/list' element={<List setIsloading={setIsloading} />} />
+        <Route path='/orders' element={<Order setIsloading={setIsloading} />} />
       </Routes>
       
     </div>
